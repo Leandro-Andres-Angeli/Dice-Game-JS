@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./dist/styles.css">
+</head>
+
+<body class=" bg-gradient-to-r from-blue-500 via-sky-900 to-cyan-600 p-5 text-center h-screen">
+    <h1 class="p-5 text-2xl text-white font-bold">Coding Challenge : Dice Game</h1>
+    <!-- display: flex;
+flex-direction: column;
+position: absolute;
+left: 50%;
+width: fit-content;
+height: fit-content;
+transform: translate(-50%);
+top: 50%; -->
+    <div class="game-buttons flex flex-col absolute h-3/5 " style="top:25%;left:50%;transform:translate(-50%)">
+        <button class="btn">new game</button>
+        <div class="dice bg-white border-slate-500 border-2 h-24 w-28 my-auto">
+
+        </div>
+        <button class="btn">roll dice</button>
+        <button class="btn">hold</button>
+    </div>
+    <section class="board-game h-4/5 w-11/12 md:w-4/6  m-auto bg-bg_white rounded grid-cols-2 grid">
+        <div class="border-r-2 border-blue-200">player 1</div>
+        <div>player 2</div>
+    </section>
+
+</body>
+
+</html>

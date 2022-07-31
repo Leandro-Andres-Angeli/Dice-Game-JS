@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+	.btn {
+		@apply rounded bg-white my-2 px-3 py-2 drop-shadow-md uppercase hover:drop-shadow-2xl border-2 border-transparent hover:border-slate-400 transition-all;
+	}
+	/* ... */
+}
