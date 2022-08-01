@@ -11,8 +11,9 @@ module.exports = {
 				sky: colors.sky,
 				white: colors.white,
 				bg_white: '#ffffff61',
+				red: colors.red,
 			},
 		},
 	},
-	plugins: [],   
+	plugins: [],
 };
