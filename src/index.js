@@ -38,8 +38,6 @@ const updatePointsDom = (player) => {
 const setPlayerStatus = (player) => {
 	const playerCard = document.querySelector(`.player_${player.id}_card`);
 
-	// console.log(player.id);
-	// console.log(playerCard);
 	player.updateStatus(!player.status);
 	player.status === true
 		? document
@@ -59,35 +57,57 @@ const generateRandomNum = () => {
 	diceVal = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 	diceGrid.setAttribute('src', `./img/dice-${diceVal}.png`);
 };
+const handleEndGame = (winner) => {
+	console.log('end game');
+	console.log(winner);
+	const btns = document.querySelectorAll('button');
+	console.log(btns);
+	for (const btn of btns) {
+		btn.hasAttribute('disabled')
+			? btn.removeAttribute('disabled')
+			: btn.setAttribute('disabled', 'true');
+	}
+};
 
 rollDiceBtn.addEventListener('click', () => {
-	generateRandomNum();
-	const currentPlayer = playersList.filter((player) => player.status)[0];
+	
+		generateRandomNum();
+		const currentPlayer = playersList.filter((player) => player.status)[0];
 
-	currentPlayer.updatePoints(diceVal !== 1 ? diceVal : undefined);
-	console.log(currentPlayer);
-	updatePointsDom(currentPlayer);
-	console.log(currentPlayer);
+		currentPlayer.updatePoints(diceVal !== 1 ? diceVal : undefined);
+		console.log(currentPlayer);
+		updatePointsDom(currentPlayer);
+		console.log(currentPlayer);
+		console.log('render');
+		
+	
 });
 const holdPoints = () => {
-	const currentPlayer = playersList.filter((player) => player.status)[0];
-	const totalScore = document.querySelector(
-		`.player_${currentPlayer.id}_total_score`
-	);
-	const currentScore = document.querySelector(
-		`.player_${currentPlayer.id}_current_score`
-	);
-	currentPlayer.updateTotalPoints(currentPlayer.points);
-	totalScore.innerText = currentPlayer.totalScore;
+	const winner = playersList.find((p) => p.totalScore > 0);
+	while (!winner) {
+		const currentPlayer = playersList.filter((player) => player.status)[0];
+		const totalScore = document.querySelector(
+			`.player_${currentPlayer.id}_total_score`
+		);
+		const currentScore = document.querySelector(
+			`.player_${currentPlayer.id}_current_score`
+		);
+		currentPlayer.updateTotalPoints(currentPlayer.points);
+		totalScore.innerText = currentPlayer.totalScore;
+	
+		currentPlayer.updatePoints();
+		currentScore.innerText = currentPlayer.points;
+		console.log(currentPlayer);
+	
+		console.log(playersList);
+		playersList.forEach((player) => {
+			setPlayerStatus(player);
+		});
+		break;
+		
+}
+	winner && handleEndGame(winner);
 
-	currentPlayer.updatePoints();
-	currentScore.innerText = currentPlayer.points;
-	console.log(currentPlayer);
-
-	console.log(playersList);
-	playersList.forEach((player) => {
-		setPlayerStatus(player);
-	});
 };
 const holdBtn = document.querySelector('.hold-btn');
 holdBtn.addEventListener('click', holdPoints);

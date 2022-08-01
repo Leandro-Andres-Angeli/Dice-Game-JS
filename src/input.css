@@ -14,4 +14,10 @@
 	.current_score_styles {
 		@apply p-5 bg-blue-500 rounded-lg text-lg;
 	}
+	.active_player_styles {
+		@apply absolute  text-white font-semibold uppercase underline decoration-4;
+	}
+	.disabled_btn_styles {
+		@apply disabled:opacity-75 disabled:hover:bg-inherit  disabled:bg-inherit;
+	}
 }
