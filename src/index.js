@@ -70,44 +70,38 @@ const handleEndGame = (winner) => {
 };
 
 rollDiceBtn.addEventListener('click', () => {
-	
-		generateRandomNum();
-		const currentPlayer = playersList.filter((player) => player.status)[0];
+	generateRandomNum();
+	const currentPlayer = playersList.filter((player) => player.status)[0];
 
-		currentPlayer.updatePoints(diceVal !== 1 ? diceVal : undefined);
-		console.log(currentPlayer);
-		updatePointsDom(currentPlayer);
-		console.log(currentPlayer);
-		console.log('render');
-		
-	
+	currentPlayer.updatePoints(diceVal !== 1 ? diceVal : undefined);
+	console.log(currentPlayer);
+	updatePointsDom(currentPlayer);
+	console.log(currentPlayer);
+	console.log('render');
 });
-const holdPoints = () => {
-	const winner = playersList.find((p) => p.totalScore > 0);
-	while (!winner) {
-		const currentPlayer = playersList.filter((player) => player.status)[0];
-		const totalScore = document.querySelector(
-			`.player_${currentPlayer.id}_total_score`
-		);
-		const currentScore = document.querySelector(
-			`.player_${currentPlayer.id}_current_score`
-		);
-		currentPlayer.updateTotalPoints(currentPlayer.points);
-		totalScore.innerText = currentPlayer.totalScore;
-	
-		currentPlayer.updatePoints();
-		currentScore.innerText = currentPlayer.points;
-		console.log(currentPlayer);
-	
-		console.log(playersList);
-		playersList.forEach((player) => {
-			setPlayerStatus(player);
-		});
-		break;
-		
-}
-	winner && handleEndGame(winner);
 
+const holdPoints = () => {
+	const currentPlayer = playersList.filter((player) => player.status)[0];
+	const totalScore = document.querySelector(
+		`.player_${currentPlayer.id}_total_score`
+	);
+	const currentScore = document.querySelector(
+		`.player_${currentPlayer.id}_current_score`
+	);
+	currentPlayer.updateTotalPoints(currentPlayer.points);
+	totalScore.innerText = currentPlayer.totalScore;
+
+	currentPlayer.updatePoints();
+	currentScore.innerText = currentPlayer.points;
+	console.log(currentPlayer);
+	let winner = playersList.find((p) => p.totalScore >= 30);
+	console.log(winner, ' winner ');
+	console.log(playersList);
+	playersList.forEach((player) => {
+		setPlayerStatus(player);
+	});
+
+	winner && handleEndGame(winner);
 };
 const holdBtn = document.querySelector('.hold-btn');
 holdBtn.addEventListener('click', holdPoints);
