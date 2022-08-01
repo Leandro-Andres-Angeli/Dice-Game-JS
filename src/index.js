@@ -70,7 +70,7 @@ const setPlayerStatus = (player) => {
 const playersList = [player0, player1];
 window.addEventListener('load', () => {
 	setPlayerStatus(player0);
-	reloadBtn.setAttribute('disabled','true')
+	reloadBtn.setAttribute('disabled', 'true');
 });
 const generateRandomNum = () => {
 	diceVal = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
@@ -102,7 +102,7 @@ const winMsg = (winner) => {
 </li>
 </ul>`;
 	console.log('winneralert', winnerAlert);
-	document
+	return document
 		.querySelector('body')
 		.insertAdjacentHTML('afterbegin', winnerAlert.outerHTML);
 };
