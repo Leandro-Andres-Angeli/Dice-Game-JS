@@ -14,27 +14,39 @@
 
 <body class=" bg-gradient-to-r from-blue-500 via-sky-900 to-cyan-600 p-5 text-center h-screen">
     <h1 class="p-5 text-2xl text-white font-bold">Coding Challenge : Dice Game</h1>
-    <!-- display: flex;
-flex-direction: column;
-position: absolute;
-left: 50%;
-width: fit-content;
-height: fit-content;
-transform: translate(-50%);
-top: 50%; -->
-    <div class="game-buttons flex flex-col absolute h-3/5 " style="top:25%;left:50%;transform:translate(-50%)">
-        <button class="btn">new game</button>
-        <div class="dice bg-white border-slate-500 border-2 h-24 w-28 my-auto">
 
-        </div>
-        <button class="btn">roll dice</button>
-        <button class="btn">hold</button>
+    <div class="game-buttons z-10 flex flex-col absolute h-3/5  " style="top:25%;left:50%;transform:translate(-50%)">
+        <button class="btn  disabled:opacity-75 disabled:hover:bg-inherit  disabled:bg-inherit" disabled> 🔄 new
+            game</button>
+        <img
+            class="dice grid dice-grid bg-white border-slate-500 border-2 h-24 w-28 my-auto self-center drop-shadow-2xl rounded-md object-contain">
+
+        </img>
+        <button class="btn roll-dice-btn">🎲 roll dice</button>
+        <button class="btn">📤 hold</button>
     </div>
-    <section class="board-game h-4/5 w-11/12 md:w-4/6  m-auto bg-bg_white rounded grid-cols-2 grid">
-        <div class="border-r-2 border-blue-200">player 1</div>
-        <div>player 2</div>
-    </section>
+    <section class="board-game h-4/5 w-11/12 md:w-4/6  m-auto bg-bg_white rounded grid-cols-2 grid shadow-2xl">
+        <div class="border-r-2 border-blue-200 player_card player_0_cards flex relative">
+            <h4 class="uppercase  text-cyan-900 font-bold mt-9 ">player 1
+            </h4>
+            <p class='player_0_round_score '>0</p>
+            <div class="current current_score_styles">
+                <p>current score</p>
+                <p class="player_0_current_score">0</p>
 
+            </div>
+        </div>
+        <div class="player_card player_1_card">
+            <h4 class="uppercase  text-cyan-900 font-bold">player 2</h4>
+            <p class='player_1_round_score'>0</p>
+            <div class="current current_score_styles">
+                <p>current score</p>
+                <p class="player_0_current_score">0</p>
+
+            </div>
+        </div>
+    </section>
+    <script src="./src/index.js"></script>
 </body>
 
 </html>

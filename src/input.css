@@ -3,7 +3,15 @@
 @tailwind utilities;
 @layer components {
 	.btn {
-		@apply rounded bg-white my-2 px-3 py-2 drop-shadow-md uppercase hover:drop-shadow-2xl border-2 border-transparent hover:border-slate-400 transition-all;
+		@apply bg-slate-500 hover:bg-slate-50 
+        my-2 px-3 py-2 drop-shadow-md uppercase 
+        rounded-lg border-transparent 
+        transition-all;
 	}
-	/* ... */
+	.player_card {
+		@apply flex flex-col justify-between p-5 md:p-10  text-lg md:text-2xl;
+	}
+	.current_score_styles {
+		@apply p-5 bg-blue-500 rounded-lg text-lg;
+	}
 }
