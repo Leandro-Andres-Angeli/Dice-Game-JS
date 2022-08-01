@@ -19,22 +19,22 @@ w-full">
     <h1 class="p-5 text-2xl text-white font-bold">Coding Challenge : Dice Game</h1>
 
     <div class="game-buttons z-10 flex flex-col absolute h-3/5  " style="top:25%;left:50%;transform:translate(-50%)">
-        <button class="btn reload-btn disabled_btn_styles"> 🔄 new
+        <button class="btn reload-btn disabled_btn_styles disabled:opacity-0"> 🔄 new
             game</button>
         <img
-            class="dice grid dice-grid bg-white border-slate-500 border-2 h-24 w-28 my-auto self-center drop-shadow-2xl rounded-md object-contain">
+            class="dice grid dice-grid bg-white border-slate-500 border-2 h-24 w-24 md:h-24 md:w-28 my-auto self-center drop-shadow-2xl rounded-md object-contain">
 
         </img>
         <button class="btn  disabled_btn_styles roll-dice-btn">🎲 roll dice</button>
         <button class="btn disabled_btn_styles hold-btn ">📤 hold</button>
     </div>
-    <section class="board-game h-4/5 w-11/12 md:w-4/6  m-auto bg-bg_white rounded grid-cols-2 grid shadow-2xl">
+    <section class="board-game relative h-4/5 w-11/12 md:w-4/6  m-auto bg-bg_white rounded grid-cols-2 grid shadow-2xl">
         <div class="border-r-2 border-blue-200 player_card player_0_card flex relative">
-            <span class=" active_player_styles active-player-0">active
+            <span class=" active_player_styles active-player-0 top-[-10px]">active
                 player</span>
             <h4 class="uppercase  text-cyan-900 font-bold mt-9 ">player 1
             </h4>
-            <p class='player_0_total_score '>0</p>
+            <p class='player_0_total_score total_score_styles'>0</p>
             <div class="current current_score_styles">
                 <p>current score</p>
                 <p class="player_0_current_score">0</p>
@@ -44,7 +44,7 @@ w-full">
         <div class="player_card player_1_card">
             <span class="active_player_styles active-player-1 hidden">active player</span>
             <h4 class="uppercase  text-cyan-900 font-bold mt-9">player 2</h4>
-            <p class='player_1_total_score '>0</p>
+            <p class='player_1_total_score total_score_styles'>0</p>
             <div class="current current_score_styles">
                 <p>current score</p>
                 <p class="player_1_current_score">0</p>

@@ -88,8 +88,12 @@ const winMsg = (winner) => {
 		'p-5',
 		'mx-auto',
 		'z-50',
-		'absolute'
+		'absolute',
+		'shadow-md',
+		'border-black'
 	);
+	winnerAlert.style.zIndex = 50;
+	winnerAlert.style.backgroundColor = 'white';
 	winnerAlert.innerHTML = `<h2>Finished Game !! </h2> <ul>Winner ${
 		winner.id + 1
 	}
