@@ -1,6 +1,24 @@
 const rollDiceBtn = document.querySelector('.roll-dice-btn');
 const diceGrid = document.querySelector('.dice-grid');
+const reloadBtn = document.querySelector('.reload-btn');
 let diceVal;
+//USING OBJECT INSTEAD OF CLASSES EXAMPLE
+//USING OBJECT INSTEAD OF CLASSES EXAMPLE
+// const player = {
+// 	points: 2,
+// 	handlePoints(update) {
+// 		return (this.points = this.points + update);
+// 	},
+// };
+// function handleP(update) {
+// 	return (this.points = this.points + update);
+// }
+// console.log(player.handlePoints(2));
+// console.log(player);
+// handleP.apply(player, [4]);
+// console.log(player);
+//USING OBJECT INSTEAD OF CLASSES EXAMPLE
+//USING OBJECT INSTEAD OF CLASSES EXAMPLE
 
 function Player(points = 0, id) {
 	this.points = points;
@@ -52,21 +70,58 @@ const setPlayerStatus = (player) => {
 const playersList = [player0, player1];
 window.addEventListener('load', () => {
 	setPlayerStatus(player0);
+	reloadBtn.setAttribute('disabled','true')
 });
 const generateRandomNum = () => {
 	diceVal = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 	diceGrid.setAttribute('src', `./img/dice-${diceVal}.png`);
 };
+const winMsg = (winner) => {
+	const winnerAlert = document.createElement('div');
+	winnerAlert.classList.add(
+		'bg-slate-50',
+		'rounded-md',
+		'shadow-lg',
+		'self-center',
+		'font-semibold',
+		'w-1/3',
+		'p-5',
+		'mx-auto',
+		'z-50',
+		'absolute'
+	);
+	winnerAlert.innerHTML = `<h2>Finished Game !! </h2> <ul>Winner ${
+		winner.id + 1
+	}
+<li>
+
+	Score:
+
+	${winner.totalScore}
+
+</li>
+</ul>`;
+	console.log('winneralert', winnerAlert);
+	document
+		.querySelector('body')
+		.insertAdjacentHTML('afterbegin', winnerAlert.outerHTML);
+};
 const handleEndGame = (winner) => {
-	console.log('end game');
-	console.log(winner);
+	// console.log('end game');
+	// console.log(winner);
 	const btns = document.querySelectorAll('button');
-	console.log(btns);
+	// console.log(btns);
+	winMsg(winner);
 	for (const btn of btns) {
-		btn.hasAttribute('disabled')
+		btn.getAttribute('disabled') !== null
 			? btn.removeAttribute('disabled')
 			: btn.setAttribute('disabled', 'true');
 	}
+	// const tagWinner = winMsg(winner);
+	// console.log('winner', tagWinner);
+	// document
+	// 	.querySelector('body')
+	// 	.insertAdjacentHTML('afterbegin', tagWinner.outerHTML);
 };
 
 rollDiceBtn.addEventListener('click', () => {
@@ -74,10 +129,10 @@ rollDiceBtn.addEventListener('click', () => {
 	const currentPlayer = playersList.filter((player) => player.status)[0];
 
 	currentPlayer.updatePoints(diceVal !== 1 ? diceVal : undefined);
-	console.log(currentPlayer);
+	// console.log(currentPlayer);
 	updatePointsDom(currentPlayer);
-	console.log(currentPlayer);
-	console.log('render');
+	// console.log(currentPlayer);
+	// console.log('render');
 });
 
 const holdPoints = () => {
@@ -93,10 +148,10 @@ const holdPoints = () => {
 
 	currentPlayer.updatePoints();
 	currentScore.innerText = currentPlayer.points;
-	console.log(currentPlayer);
+	// console.log(currentPlayer);
 	let winner = playersList.find((p) => p.totalScore >= 30);
-	console.log(winner, ' winner ');
-	console.log(playersList);
+
+	// console.log(playersList);
 	playersList.forEach((player) => {
 		setPlayerStatus(player);
 	});
@@ -105,3 +160,7 @@ const holdPoints = () => {
 };
 const holdBtn = document.querySelector('.hold-btn');
 holdBtn.addEventListener('click', holdPoints);
+
+reloadBtn.addEventListener('click', () => {
+	location.reload();
+});

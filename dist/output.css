@@ -810,18 +810,6 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.disabled\:bg-inherit:disabled {
-  background-color: inherit;
-}
-
-.disabled\:opacity-75:disabled {
-  opacity: 0.75;
-}
-
-.disabled\:hover\:bg-inherit:hover:disabled {
-  background-color: inherit;
-}
-
 @media (min-width: 768px) {
   .md\:w-4\/6 {
     width: 66.666667%;
