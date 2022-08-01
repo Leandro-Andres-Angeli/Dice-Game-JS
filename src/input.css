@@ -12,7 +12,7 @@
 		@apply flex flex-col justify-between p-5 md:p-10  text-lg md:text-2xl;
 	}
 	.current_score_styles {
-		@apply p-1 md:p-5 bg-blue-500 rounded-lg text-base md:text-lg uppercase font-semibold text-blue-50;
+		@apply p-1 md:p-5 bg-blue-500 rounded-lg text-base md:text-lg uppercase font-semibold text-blue-50 shadow-md shadow-inner;
 	}
 	.active_player_styles {
 		@apply absolute  text-white font-semibold uppercase bg-blue-400 decoration-4  px-4 py-2 text-sm no-underline w-max top-[-20px] shadow-xl rounded-xl;
